@@ -1,2 +1,2 @@
-# Javascript
-Code snippets about the fundamentals of Javascript
+# JavaScript
+Code snippets about the fundamentals of JavaScript
