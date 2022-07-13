@@ -37,7 +37,7 @@ console.log(`x is ${x} and y is ${y}, so the average is ${average}`)
 console.log(x > y); // >, <, >=, <=, ==, !=
 
 // BMI
-const massMiamiHacker = 73;
+const massMiamiHacker = 71; // set to 83.5 
 const heightMiamiHacker = 1.81;
 const massJohnDoe = 94;
 const heightJohnDoe = 1.92;
@@ -48,7 +48,66 @@ let bmiJohnDoe = massJohnDoe / heightJohnDoe ** 2;
 bmiJohnDoe = bmiJohnDoe.toFixed(1)
 console.log(`BMI John Doe ${bmiJohnDoe}`);
 if (bmiMiamiHacker > bmiJohnDoe) {
-    console.log(`MiamiHacker BMI is ${bmiMiamiHacker} and John Doe BMI is ${bmiJohnDoe} so MiamiHacker BMI is higher`)
+    console.log(`MiamiHacker BMI is ${bmiMiamiHacker} and John Doe BMI is ${bmiJohnDoe} so MiamiHacker BMI is higher`);
+} else if (bmiMiamiHacker < bmiJohnDoe) {
+    console.log(`John Doe BMI is ${bmiJohnDoe} and MiamiHacker BMI is ${bmiMiamiHacker} so John Doe BMI is higher`);
 } else {
-    console.log(`John Doe BMI is ${bmiJohnDoe} and MiamiHacker BMI is ${bmiMiamiHacker} so John Doe BMI is higher`)
+    console.log(`John Doe BMI is ${bmiJohnDoe} and MiamiHacker BMI is ${bmiMiamiHacker} so both BMI are the same`);
+}
+
+// string to number - conversion
+let _year = "2022";
+console.log(typeof _year);
+_year = Number(_year);
+console.log(typeof _year, _year - 22);
+
+// type coercien - bcs of the plus 19 is also a string now 
+console.log("I'm " + 19 + " years old");
+// - * / will converts a string to a number
+console.log("15" * "10" - 50, "100" / "10");
+
+let n = "10" / "5" - "1" + "2";
+n -= 2;
+console.log(`n = ${n + "0"}`);
+
+// equality operator
+// const z = Number("1")
+const z = "1"; // change "1" to 1 
+if (z === 1) console.log(`z is a strict equality operator`);
+else console.log(`z is not a strict equality operator`);
+if (z == 1) console.log(`z is a loose operator`);
+
+// operators
+// const teamA = 102;
+// const teamB = 101;
+const teamA = Math.floor((96 + 108 + 89) / 3);
+const teamB = Math.floor((88 + 91 + 110) / 3);
+const winScore = 100;
+console.log(`Avarage Team A ${teamA}`);
+console.log(`Avarage Team B ${teamB}`);
+if (teamA > teamB && teamA >= winScore){
+    console.log(`Team A wins the trophy with a score of ${teamA}`);
+} else if (teamA < teamB && teamB >= winScore){
+    console.log(`Team B wins the trophy with a score of ${teamB}`);
+} else if (teamA === teamB && teamB >= winScore){
+    console.log(`Team A and Team B wins the trophy both with a score of ${teamA}`);
+} else if (teamA > teamB && teamA < winScore) {
+    console.log(`Team A wins with a score of ${teamA} but gets no trophy`);
+} else if (teamA < teamB && teamA < winScore) {
+    console.log(`Team B wins with a score of ${teamB} but gets no trophy`);
+} else {
+    console.log(`Team A and Team B scored both ${teamA} but they gets no trophy`);
+}
+
+const luckyNumber = 100;
+switch (luckyNumber) {
+    case 100:
+        console.log(`It's 100`);
+        break;
+    case 99:
+    case 98:
+        console.log(`It's 98 or 99`);
+        break;
+    default:
+        console.log(`Try 98, 99 or 100`)
 }
