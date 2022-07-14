@@ -1,3 +1,5 @@
+'use strict';
+
 // string
 const firstName = "Miami";
 const lastName = "Hacker";
@@ -10,7 +12,7 @@ let user = false;
 // Undefined means not defined yet so it's a empty value
 // Null also means empty value
 let student;
-// BigInt is for larger integers than the Number type cab hold
+// BigInt is for larger integers than the Number type can hold
 if (!user){
     console.log(`
     firstName is a ${typeof firstName} 
@@ -109,5 +111,69 @@ switch (luckyNumber) {
         console.log(`It's 98 or 99`);
         break;
     default:
-        console.log(`Try 98, 99 or 100`)
+        console.log(`Try 98, 99 or 100`);
 }
+
+// conditional operator
+const num = 20;
+num >= 20 ? console.log(`It's 20 or above`) : console.log(`It's below 20`);
+const check20 = num >= 20 ? `It's 20 or above` : `It's below 20`;
+console.log(check20);
+
+const billValue = 100; 
+const tipValue = billValue >= 50 && billValue <= 300 ? 15 : 20;
+const tip = billValue * tipValue / 100;
+console.log(`The bill was ${billValue}, the tip was ${tip}, and the total value is ${billValue + tip}`);
+
+// functions
+function blender(apple, orange, banana){
+    const smoothie = `${apple} apples, ${orange} oranges and ${banana} bananas`;
+    return smoothie;
+}
+const appleJuice = blender(8,0,0);
+console.log(`For applejuice you need ${appleJuice}`);
+const orangeJuice = blender(0,6,0);
+console.log(`For orangejuice you need ${orangeJuice}`);
+const bananaSmoothie = blender(2,1,4);
+console.log(`For a bananasmoothie you need ${bananaSmoothie}`);
+
+function multiplySum(a, b){
+    const sum = a * b;
+    return sum;
+}
+console.log(multiplySum(10,5));
+
+// Function declaration 
+console.log(myAge(2003));
+function myAge(birthYear){
+    return 2022 - birthYear;
+}
+console.log(myAge(2003));
+
+// Function expression 
+const calcAge = function (birthYear) {
+    return 2022 - birthYear;
+}
+const newAge = calcAge(2003);
+console.log(newAge);
+
+// Arrow Function
+const newAgeTwo = birthYear => 2022 - birthYear;
+const ageTwo = newAgeTwo(2003);
+console.log(ageTwo);
+
+const retirement = birthYear => {
+    const myAge = 2022 - birthYear;
+    const retire = 67 - myAge;
+    return retire;
+}
+const retireAge = retirement(2003);
+console.log(`It takes you ${retireAge} yrs before retirement.`);
+
+const myRetirement = (birthYear, myName) => {
+    const age = 2022 - birthYear;
+    const retire = 67 - age;
+    return `${myName} retires in ${retire} years.`;
+}
+console.log(myRetirement(2003, 'MiamiHacker'));
+console.log(myRetirement(1969, "JohnDoe"));
