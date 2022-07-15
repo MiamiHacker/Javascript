@@ -50,7 +50,7 @@ console.log(text);
 console.log(`-----------------------------------------`)
 const bmiData = {
     personOne: ['MiamiHacker', 78, 1.69],
-    personTwo: ['JohnDoe', 392, 1.95]
+    personTwo: ['JohnDoe', 92, 1.95]
 }
 function calcBmi(a, b){
     return a / b ** 2;
