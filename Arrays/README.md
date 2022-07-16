@@ -7,3 +7,5 @@ Code snippets about Arrays in JavaScript
 - unshift
 - pop
 - shift
+- Total of Array
+- Average of Array

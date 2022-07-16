@@ -78,3 +78,13 @@ const allBills = [125, 555, 44];
 const allTips = [calcTip(allBills[0]), calcTip(allBills[1]), calcTip(allBills[2])];
 const amount = [allBills[0] + allTips[0], allBills[1] + allTips[1], allBills[2] + allTips[2]];
 console.log(allBills, allTips, amount);
+
+console.log(`----- total of array -----`);
+const x = [1, 2, 3, 4, 5];
+const y = x.reduce((a, b) => a + b, 0);
+console.log(y);
+
+console.log(`----- average of array -----`);
+const arr = [1, 2, 3, 4, 5];
+const average = arr.reduce((a, b) => a + b, 0) / arr.length;
+console.log(average);
