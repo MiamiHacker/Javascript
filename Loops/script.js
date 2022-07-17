@@ -201,6 +201,25 @@ const calcTemp = function (temps) {
   );
   return max - min;
 };
-calcTemp(allTemps);
+// calcTemp(allTemps);
 const amplitude = calcTemp(allTemps);
 console.log(`The amplitude is ${amplitude}`);
+
+console.log(`----- forecasted temperatures -----`);
+const dataOne = [19, 23, 21, 25, 27];
+const dataTwo = [12, 5, -5, 0, 4];
+// console.log(dataOne, dataTwo);
+const printForecast = function (arr) {
+  let str = "";
+  for (let i = 0; i < arr.length; i++) {
+    // console.log(`.. ${arr[i]}°C in ${i + 1} days ..`);
+    if (i === 0) {
+      str += ` .. ${arr[i]}°C in ${i + 1} day`;
+    } else {
+      str += ` .. ${arr[i]}°C in ${i + 1} days`;
+    }
+  }
+  console.log(`${str} ..`);
+};
+printForecast(dataOne);
+printForecast(dataTwo);

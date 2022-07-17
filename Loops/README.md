@@ -8,3 +8,5 @@ Code snippets about Loops in JavaScript
 - while loop
 - total and average of array with a for loop
 - min and max in array and amplitude
+- concatenate multiple arrays
+- concatenate multiple strings
