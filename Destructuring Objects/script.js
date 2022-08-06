@@ -26,7 +26,29 @@ const restaurant = {
       close: 24,
     },
   },
+
+  orderDelivery: function ({
+    time = "16:00",
+    address,
+    starterIndex = 0,
+    mainIndex = 0,
+  }) {
+    console.log(
+      `Order received: ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
 };
+
+restaurant.orderDelivery({
+  time: "21:40",
+  address: "Chase Ave, 18",
+  starterIndex: 3,
+  mainIndex: 0,
+});
+
+restaurant.orderDelivery({
+  address: "Royal Palm Ave, 208",
+});
 
 const { companyName, openingHours, categories } = restaurant;
 console.log(companyName, openingHours, categories);
