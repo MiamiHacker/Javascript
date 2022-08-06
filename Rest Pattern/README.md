@@ -1,7 +1,3 @@
 # JavaScript
 
-Code snippets about the Spread Operator in JavaScript
-
-- copy array
-- join arrays
-- in objects
+Code snippets about the Rest Pattern in JavaScript
