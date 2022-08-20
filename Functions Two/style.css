@@ -1,0 +1,27 @@
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to top right, #4f6275, #0b587c);
+}
+h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 60px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.buy,
+.poll {
+  font-size: 1.6rem;
+  padding: 1rem 2rem;
+  position: absolute;
+  top: 2rem;
+}
+.buy {
+  left: 2rem;
+}
+.poll {
+  right: 2rem;
+}
