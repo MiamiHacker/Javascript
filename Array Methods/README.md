@@ -9,5 +9,7 @@ Code snippets about Array Methods in JavaScript
 - join
 - push
 - at
+- filter
+- reduce
 - for of with arrays
 - forEach with arrays, sets and maps

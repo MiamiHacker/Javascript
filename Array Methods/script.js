@@ -140,3 +140,22 @@ console.log(bank);
 const conEurUsd = [];
 for (const con of convert) conEurUsd.push(con * convertEurUsd);
 console.log(conEurUsd);
+
+// filter
+// const deposits = convert.filter(function (deposit) {
+//   return deposit > 0;
+// });
+const deposits = convert.filter((deposit) => deposit > 0);
+console.log(deposits);
+
+const withdrawals = convert.filter((withdraw) => withdraw < 0);
+console.log(withdrawals);
+
+// reduce -> accumulator + current
+const balance = convert.reduce((accumulator, current) => accumulator + current);
+console.log(`Balance: ${balance}`);
+
+// for loop
+const depositsTwo = [];
+for (const deposit of deposits) if (deposit > 0) depositsTwo.push(deposit);
+console.log(depositsTwo);
