@@ -7,6 +7,7 @@ Code snippets about Array Methods in JavaScript
 - reverse
 - concat
 - join
+- push
 - at
 - for of with arrays
 - forEach with arrays, sets and maps

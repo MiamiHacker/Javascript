@@ -116,3 +116,27 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, _, map) {
   console.log(value);
 });
+
+// map method
+const convert = [1200, 1450, -400, 2200, -650, -130, -70, -135, 1940];
+const convertEurUsd = 1.1;
+
+const convertUsdArrow = convert.map((con) => con * convertEurUsd);
+
+const convertUsd = convert.map(function (con) {
+  return con * convertEurUsd;
+});
+
+console.log(convert);
+console.log(convertUsdArrow);
+console.log(convertUsd);
+
+const bank = convert.map(
+  (con, i) => `${i}: ${con > 0 ? "deposit" : "withdraw"} ${Math.abs(con)}`
+);
+console.log(bank);
+
+// for of loop
+const conEurUsd = [];
+for (const con of convert) conEurUsd.push(con * convertEurUsd);
+console.log(conEurUsd);
