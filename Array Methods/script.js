@@ -132,7 +132,7 @@ console.log(convertUsdArrow);
 console.log(convertUsd);
 
 const bank = convert.map(
-  (con, i) => `${i}: ${con > 0 ? "deposit" : "withdraw"} ${Math.abs(con)}`
+  (con, i) => `${i + 1}: ${con > 0 ? "deposit" : "withdraw"} ${Math.abs(con)}`
 );
 console.log(bank);
 
@@ -152,10 +152,62 @@ const withdrawals = convert.filter((withdraw) => withdraw < 0);
 console.log(withdrawals);
 
 // reduce -> accumulator + current
-const balance = convert.reduce((accumulator, current) => accumulator + current);
+const balance = convert.reduce(
+  (accumulator, current) => accumulator + current,
+  0
+);
 console.log(`Balance: ${balance}`);
+
+const maxDeposit = convert.reduce(
+  (accumulator, current) => (accumulator > current ? accumulator : current),
+  convert[0]
+);
+console.log(`Max deposit: ${maxDeposit}`);
 
 // for loop
 const depositsTwo = [];
 for (const deposit of deposits) if (deposit > 0) depositsTwo.push(deposit);
 console.log(depositsTwo);
+
+// total deposit in USD
+const totalDepositsUsd = convert
+  .filter((con) => con > 0)
+  .map((con) => con * convertEurUsd)
+  .reduce((accumulator, current) => accumulator + current, 0);
+console.log(`Total deposits $ ${totalDepositsUsd}`);
+
+// total withdraws in USD
+const totalWithdrawsUsd = convert
+  .filter((con) => con < 0)
+  .map((con) => con * convertEurUsd)
+  .reduce((accumulator, current) => accumulator + current, 0);
+console.log(`Total withdraws $ ${totalWithdrawsUsd.toFixed(2)}`);
+
+// first withdraw with find method
+const firstWithdrawal = convert.find((con) => con < 0);
+console.log(firstWithdrawal);
+
+// find method example on a onject
+// Data
+const account1 = {
+  owner: "Miami Hacker",
+  movements: [1200, 1450, -400, 2200, -650, -130, -70, -135, 1940],
+  interestRate: 1.7, // %
+  pin: 1111,
+};
+const account2 = {
+  owner: "John Doe",
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.4,
+  pin: 2222,
+};
+const account3 = {
+  owner: "Jane Snow",
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 1.9,
+  pin: 3333,
+};
+const accounts = [account1, account2, account3];
+
+const account = accounts.find((acc) => acc.owner === "Miami Hacker");
+console.log(account);

@@ -11,5 +11,7 @@ Code snippets about Array Methods in JavaScript
 - at
 - filter
 - reduce
+- map
+- find
 - for of with arrays
 - forEach with arrays, sets and maps
