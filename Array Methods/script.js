@@ -211,3 +211,45 @@ const accounts = [account1, account2, account3];
 
 const account = accounts.find((acc) => acc.owner === "Miami Hacker");
 console.log(account);
+
+// includes method checks for Equality
+console.log(convert.includes(-130));
+
+// some method checks for a condition
+const anyDeposits = convert.some((con) => con > 2000);
+console.log(anyDeposits);
+
+// every method
+console.log(convert.every((con) => con >= 0));
+console.log(convert.every((con) => con >= -650));
+
+// flat method
+const numArr = [[1, 2], 3, [4, 5, 6], 7, 8];
+const numArrDeep = [[1, 2], 3, [[4, 5], 6], 7, 8];
+console.log(numArr.flat());
+console.log(numArrDeep.flat());
+console.log(numArrDeep.flat(2)); // 2 levels deep
+
+// example flat
+// const allAccountMovements = accounts.map((acc) => acc.movements);
+// console.log(allAccountMovements);
+// const allMovements = allAccountMovements.flat();
+// console.log(allMovements);
+// const totalBalance = allMovements.reduce(
+//   (accumulator, current) => accumulator + current,
+//   0
+// );
+// console.log(totalBalance);
+
+// flat method
+const totalBalance = accounts
+  .map((acc) => acc.movements)
+  .flat()
+  .reduce((accumulator, current) => accumulator + current, 0);
+console.log(totalBalance);
+
+// flatMap method goes 1 level deep!!
+const totalBankBalance = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce((a, c) => a + c, 0);
+console.log(totalBankBalance);

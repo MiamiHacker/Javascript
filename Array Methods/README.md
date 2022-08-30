@@ -13,5 +13,10 @@ Code snippets about Array Methods in JavaScript
 - reduce
 - map
 - find
+- includes
+- some
+- every
+- flat
+- flatmap
 - for of with arrays
 - forEach with arrays, sets and maps
