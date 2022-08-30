@@ -84,11 +84,12 @@ createUsernames(accounts);
 console.log(accounts);
 
 // current balance
-const calcCurrentBalance = function (movements) {
-  const balance = movements.reduce(
+const calcCurrentBalance = function (acc) {
+  const balance = acc.movements.reduce(
     (accumulator, current) => accumulator + current,
     0
   );
+  acc.balance = balance;
   console.log(balance);
   labelBalance.textContent = `€ ${balance}`;
 };
@@ -112,6 +113,16 @@ const calcDisplaySummary = function (acc) {
 };
 // calcDisplaySummary(account1.movements);
 
+// display
+const updateUI = function (acc) {
+  // display movements
+  displayMovements(acc.movements);
+  // display balance
+  calcCurrentBalance(acc);
+  // display summary
+  calcDisplaySummary(acc);
+};
+
 // login user
 let currentAccount;
 
@@ -123,6 +134,7 @@ btnLogin.addEventListener("click", function (event) {
     (acc) => acc.username === inputLoginUsername.value
   );
   // with ? if statement only runs when currentAccount exist
+  // optional chaining
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     console.log(`Login: ${currentAccount.owner}`);
     // display UI and welcome message
@@ -133,12 +145,80 @@ btnLogin.addEventListener("click", function (event) {
     // blur cursor focus when enter is used
     inputLoginUsername.blur();
     inputLoginPin.blur();
-    // display movements
-    displayMovements(currentAccount.movements);
-    // display balance
-    calcCurrentBalance(currentAccount.movements);
-    // display summary
-    calcDisplaySummary(currentAccount);
+
+    updateUI(currentAccount);
   }
+
   //   console.log(currentAccount);
+});
+
+// transfer money to other account
+btnTransfer.addEventListener("click", function (event) {
+  event.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiver = accounts.find(
+    (acc) => acc.username === inputTransferTo.value
+  );
+  //   console.log(amount, receiver);
+
+  if (
+    amount > 0 &&
+    receiver &&
+    currentAccount.balance >= amount &&
+    receiver?.username !== currentAccount.username
+  ) {
+    currentAccount.movements.push(-amount);
+    receiver.movements.push(amount);
+    updateUI(currentAccount);
+    console.log(
+      `Valid Transaction: €${amount} from ${currentAccount.owner} to ${receiver.owner}`
+    );
+    inputTransferAmount.value = inputTransferTo.value = "";
+    inputTransferAmount.blur();
+    inputTransferTo.blur();
+  }
+});
+
+// get loan
+const depositPerc = 0.28;
+btnLoan.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (
+    amount > 0 &&
+    currentAccount.movements.some((mov) => mov >= amount * depositPerc)
+  ) {
+    // push amount to movements
+    currentAccount.movements.push(amount);
+    // update UI
+    updateUI(currentAccount);
+  } else {
+    const maxDeposit = currentAccount.movements.reduce(
+      (accumulator, current) => (accumulator > current ? accumulator : current),
+      currentAccount.movements[0]
+    );
+    const maxLoan = maxDeposit / depositPerc;
+    console.log(`Max loan: ${maxLoan.toFixed(2)}`);
+  }
+});
+
+// close account
+btnClose.addEventListener("click", function (event) {
+  event.preventDefault();
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      (acc) => acc.username === currentAccount.username
+    );
+    // delete account
+    console.log(`Account of ${currentAccount.owner} is deleted!`);
+    accounts.splice(index, 1);
+    // hide UI
+    containerApp.style.opacity = 0;
+  }
+  inputCloseUsername.value = inputClosePin.value = "";
 });
