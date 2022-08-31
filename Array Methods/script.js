@@ -329,4 +329,78 @@ console.log(
 );
 
 //////////////////
-// generate arrays
+// generate arrays - fill method
+const x = new Array(7).fill(1);
+console.log(x);
+x.fill(9, 1, 3).fill(7, 4, 6);
+console.log(x);
+
+///////////////
+// from method
+const y = Array.from({ length: 3 }, () => 1);
+console.log(y);
+const z = Array.from({ length: 10 }, (_, i) => (i + 1) * 9);
+console.log(z);
+
+///////////
+// examples
+const dice = Array.from({ length: 100 }, () =>
+  Math.floor(Math.random() * 6 + 1)
+);
+console.log(dice);
+console.log(dice.includes(7));
+console.log(dice.filter((d) => d === 6).length);
+console.log(dice.reduce((count, d) => (d === 6 ? count + 1 : count), 0));
+
+// ++ and -- mutates the variable
+let increment = 9;
+console.log(++increment);
+console.log(--increment);
+
+///////////////////////
+// reduce with a object
+const sums = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+      return sums;
+    },
+    {
+      deposits: 0,
+      withdrawals: 0,
+    }
+  );
+console.log(sums);
+
+// TitleCase with exceptions
+const convertTitleCase = function (title) {
+  const capitzalize = (str) => str[0].toUpperCase() + str.slice(1);
+
+  const exceptions = [
+    "a",
+    "as",
+    "at”",
+    "by",
+    "for",
+    "in",
+    "is",
+    "of",
+    "off",
+    "on",
+    "per",
+    "to",
+    "up",
+    "via",
+  ];
+
+  const titleCase = title
+    .toLowerCase()
+    .split(" ")
+    .map((word) => (exceptions.includes(word) ? word : capitzalize(word)))
+    .join(" ");
+
+  return capitzalize(titleCase);
+};
+console.log(convertTitleCase("is this A niCe title?"));
+console.log(convertTitleCase("this is a title for you by me in javascript"));

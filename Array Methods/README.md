@@ -19,5 +19,7 @@ Code snippets about Array Methods in JavaScript
 - flat
 - flatmap
 - sort
+- fill
+- from
 - for of with arrays
 - forEach with arrays, sets and maps
